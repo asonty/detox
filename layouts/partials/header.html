@@ -1,0 +1,36 @@
+    <header id="site-header">
+        <div class="container">
+            <a href="{{ .Site.BaseURL }}" alt="{{ .Site.Title }}"><h1 class="blog-title heading">{{ .Site.Title }}</h1></a>
+            <p class="blog-description">{{ .Site.Params.description }}</p>
+
+            <nav>
+                <ul class='nav' id='navbar'>;
+                    <li>
+                        {{ with .Site.Params.github }}
+                        <a class="button-square button-social" data-hint="GitHub" title="GitHub" href="https://www.github.com/{{ . }}">
+                            <i class="fa fa-code"></i>
+                        </a>
+                        {{ end }}
+                    </li>
+
+                    <li>
+                        {{ with .Site.Params.linkedin }}
+                        <a class="button-square button-social" data-hint="LinkedIn"  target="_blank" title="LinkedIn" href="{{ . }}">
+                            <i class="fa fa-linkedin"></i>
+                        </a>
+                        {{ end }}
+                    </li>
+
+                    <li>
+                        {{ with .Site.Params.email }}
+                        <a class="button-square button-social" data-hint="Email" title="Email" href="mailto:{{ . }}">
+                            <i class="fa fa-envelope-open"></i>
+                        </a>
+                        {{ end }}
+                    </li>
+
+        </ul>
+        </nav>
+        </div>
+    </header>
+    <hr class='containerheader'>   

@@ -1,0 +1,34 @@
+<article class="li {{ .Type }}">
+        <header class="post-header">
+            <h3 class="post-title"><a href="{{ .Permalink }}">{{ .Title }}</a></h3>
+            <p class="post-time"><time datetime="{{ .Date.Format "2006-01-02T15:04:05Z07:00" | safeHTML }}">{{ .Date.Format "01-02-2006" }}</time></p>
+        </header>
+
+        <img class ="titleimg" style="max-width:25%;max-height:25%;float: left!important;" src="{{ index .Params "titleimg" }}.{{ index .Params "imgtype" }}" />
+        <section class="post-excerpt">
+            <p>{{ .Summary }}</p>
+        </section>
+        <--
+        <div class="summary">
+            {{ with .Description }}
+            {{ $.Scratch.Set "summary" (markdownify .) }}
+            {{ else }}
+            {{ $.Scratch.Set "summary" ((delimit (findRE "(<p.*?>(.|\n)*?</p>\\s*)+" .Content) "[&hellip;] ") | plainify | truncate (default 200 .Site.Params.summary_length) (default " &hellip;" .Site.Params.text.truncated ) | replaceRE "&amp;" "&" | safeHTML) }}
+            {{ end }}
+            {{ $.Scratch.Get "summary" }}
+        </div>
+        -->
+    
+        <footer class="post-footer">
+            <span>
+                {{ if .Site.Params.disqusShortname }}
+                <a href="{{ .Permalink }}#comments"><i class="fa fa-comment"></i> Comments</a>
+                {{ end }}
+                {{ with.Params.tags }}
+                    &nbsp;&nbsp;<i class="fa fa-tag"></i>
+                    {{ delimit  . ", " }}
+                {{ end }}
+            </span>
+        </footer>
+    </article>
+    <hr>
